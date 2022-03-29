@@ -20,12 +20,15 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Label Content="{Binding PushedButtons}"></Label>
-        <ListView ItemsSource="{Binding PushedButtons}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>                
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="1" Content="{Binding GuessingWord}"></Label>
+            <ListView ItemsSource="{Binding PushedButtons}"/>
+        </Grid>
         
-        
-        
-
         <UniformGrid Name="Buttons" Grid.Column="0" Grid.Row="1">
             <Button  CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" Content="A" Command="{Binding ButtonPushed}" ></Button>
             <Button  CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" Content="B" Command="{Binding ButtonPushed}" ></Button>

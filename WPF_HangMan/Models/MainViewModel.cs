@@ -59,6 +59,7 @@ namespace WPF_HangMan.Models
                 _pushedbutton = value[0];
                 NotifyPropertyChanged("PushedButton");
                 _pushedButtons.Add(_pushedbutton);
+                PlayTurn(_pushedbutton);
             }
         }
 
@@ -73,14 +74,18 @@ namespace WPF_HangMan.Models
             foreach(var letter in _secretWord)
             {
                 var indexes = AllIndexesOf(_secretWord, letter).ToArray();
+                Console.WriteLine("done that");
                 if (indexes.Length != -1)
                 {
+                    var guessingWord = _guessingWord.ToCharArray();
                     foreach(var index in indexes)
                     {
-                        //_guessingWord[index] = str;
+
+                        guessingWord[index] = value;
                     }
                 }
-                
+                _guessingWord = string.Join("", GuessingWord);
+                NotifyPropertyChanged("GuessingWord");
             }
         }
 
