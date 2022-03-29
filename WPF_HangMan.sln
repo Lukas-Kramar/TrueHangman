@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_HangMan", "WPF_HangMan\WPF_HangMan.csproj", "{4C9899AB-4B9E-4B80-9FCE-85229F497C50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C9899AB-4B9E-4B80-9FCE-85229F497C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C9899AB-4B9E-4B80-9FCE-85229F497C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C9899AB-4B9E-4B80-9FCE-85229F497C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C9899AB-4B9E-4B80-9FCE-85229F497C50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F693B488-02F0-4376-B089-3333EFBD5AD8}
+	EndGlobalSection
+EndGlobal
