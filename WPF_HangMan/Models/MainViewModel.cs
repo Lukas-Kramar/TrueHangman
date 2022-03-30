@@ -42,13 +42,13 @@ namespace WPF_HangMan.Models
                     PushedButton = value;
                     ButtonPushed.RaiseCanExecureChanged();
                 },
-                (parameter) => { return !_pushedButtons.Contains(parameter[0]); }                
+                (parameter) => { return !_pushedButtons.Contains(parameter[0]); }
                 );
         }
 
         public ObservableCollection<char> PushedButtons
         {
-            get { return _pushedButtons; }  
+            get { return _pushedButtons; }
             //set { return _pushedButtons.Add(); }
         }
         public string PushedButton
@@ -69,34 +69,37 @@ namespace WPF_HangMan.Models
             set { _guessingWord = value; }
         }
 
-        public void PlayTurn (char value)
+        public void PlayTurn(char value)
         {
-            foreach(var letter in _secretWord)
+            var indexes = AllIndexesOf(_secretWord, value).ToArray();
+            if (indexes.Length != -1)
             {
-                var indexes = AllIndexesOf(_secretWord, letter).ToArray();
-                Console.WriteLine("done that");
-                if (indexes.Length != -1)
+                var guessingWord = _guessingWord.ToCharArray();
+                foreach (var index in indexes)
                 {
-                    var guessingWord = _guessingWord.ToCharArray();
-                    foreach(var index in indexes)
-                    {
 
-                        guessingWord[index] = value;
-                    }
+                    guessingWord[index] = value;
                 }
-                _guessingWord = string.Join("", GuessingWord);
-                NotifyPropertyChanged("GuessingWord");
-            }
+                _guessingWord = string.Join("", guessingWord);
+            }            
+            NotifyPropertyChanged("GuessingWord");
+
         }
 
         public IEnumerable<int> AllIndexesOf(string str, char searchstring)
         {
-            int minIndex = str.IndexOf(searchstring);
-            while (minIndex != -1)
+            str = str.ToLower();
+            searchstring = Char.ToLower(searchstring);
+            List<int> indexes = new List<int> { };
+            int index;
+            index = str.IndexOf(searchstring);
+            while (index != -1)
             {
-                yield return minIndex;
-                minIndex = str.IndexOf(searchstring, minIndex /*+ searchstring.Length*/);
+                indexes.Add(index);
+                index = str.IndexOf(searchstring, index + 1);
             }
+            indexes.Remove(-1);
+            return indexes;
         }
 
         //private void Form1_Load(object sender, EventArgs e)
